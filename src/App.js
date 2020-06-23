@@ -9,7 +9,11 @@ import img from "./img/image.png";
 const App = () => {
   const [data, setData] = useState({ data: "", country: "" });
   useEffect(() => {
-    fetchdata().then((responce) => setData({ ...data, data: responce }));
+    const Responce = async () => {
+      const res = await fetchdata();
+      setData({ ...data, data: res });
+    };
+    Responce();
   }, []);
   const countryChange = async (country) => {
     const data = await fetchdata(country);
