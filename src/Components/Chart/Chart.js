@@ -9,7 +9,7 @@ const Chart = ({ data: { data, country } }) => {
 			setDailyData(await fetchDailyData());
 		};
 		fetchData();
-	}, [setDailyData]);
+	}, []);
 	const lineChart =
 		dailyData.length !== 0 ? (
 			<Line

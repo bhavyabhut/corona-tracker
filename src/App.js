@@ -10,7 +10,7 @@ const App = () => {
   const [data, setData] = useState({ data: "", country: "" });
   useEffect(() => {
     fetchdata().then((responce) => setData({ ...data, data: responce }));
-  }, [setData, data]);
+  }, []);
   const countryChange = async (country) => {
     const data = await fetchdata(country);
     setData({ data, country });

@@ -9,7 +9,7 @@ const CountryPicker = ({ countryChange }) => {
 			setContry(await countries());
 		};
 		fetchCountries();
-	}, [setContry]);
+	}, []);
 
 	return (
 		<FormControl className={styles.formControl}>
