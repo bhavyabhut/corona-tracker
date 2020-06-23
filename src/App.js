@@ -13,7 +13,10 @@ const App = () => {
       const res = await fetchdata();
       setData({ ...data, data: res });
     };
+  useEffect(()=>{
     Responce();
+  },[])
+    
   const countryChange = async (country) => {
     const data = await fetchdata(country);
     setData({ data, country });
