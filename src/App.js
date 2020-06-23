@@ -14,7 +14,7 @@ const App = () => {
       setData({ ...data, data: res });
     };
     Responce();
-  }, []);
+  }, [data]);
   const countryChange = async (country) => {
     const data = await fetchdata(country);
     setData({ data, country });
