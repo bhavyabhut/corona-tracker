@@ -1,5 +1,5 @@
 
-## WATCH [LIVE](https://covid-19-tracker-2020.netlify.app/)
+## WATCH [LIVE](https://covid19-tracker-2020.netlify.app/)
 ## [CORONA TRACKER](https://covid-19-tracker-2020.netlify.app/).
 
 ## Available Scripts
