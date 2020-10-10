@@ -10,13 +10,13 @@ const Chart = ({ data: { data, country }, dailyData }) => {
           labels: dailyData?.map(({ date }) => date),
           datasets: [
             {
-              data: dailyData.map(({ confirmed }) => confirmed),
+              data: dailyData?.map(({ confirmed }) => confirmed),
               label: "Infected",
               borderColor: "#3333ff",
               fill: true,
             },
             {
-              data: dailyData.map(({ deaths }) => deaths),
+              data: dailyData?.map(({ deaths }) => deaths),
               label: "Death",
               borderColor: "red",
               backgroundColor: "rgba(255,0,0,0.5)",
@@ -27,7 +27,7 @@ const Chart = ({ data: { data, country }, dailyData }) => {
       />
     ) : null;
 
-  const barChart = data.confirmed ? (
+  const barChart = data?.confirmed ? (
     <Bar
       data={{
         labels: ["Infected", "Recovered", "Deaths"],
@@ -40,9 +40,9 @@ const Chart = ({ data: { data, country }, dailyData }) => {
               "rgba(255, 0, 0, 0.5)",
             ],
             data: [
-              data.confirmed.value,
-              data.recovered.value,
-              data.deaths.value,
+              data?.confirmed?.value,
+              data?.recovered?.value,
+              data?.deaths?.value,
             ],
           },
         ],

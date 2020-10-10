@@ -2,7 +2,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 200%;
     width: 100%;
     background: rgba(1, 1, 1, 0.6);
     display: flex;

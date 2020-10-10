@@ -19,11 +19,13 @@ const CountryPicker = ({ countryChange }) => {
         }}
       >
         <option value="">Global</option>
-        {country.map((c, i) => (
-          <option key={i} value={`${c.name}..${c.code}`}>
-            {c.name}
-          </option>
-        ))}
+        {country
+          ? country.map((c, i) => (
+              <option key={i} value={`${c.name}..${c.code}`}>
+                {c.name}
+              </option>
+            ))
+          : null}
       </NativeSelect>
     </FormControl>
   );

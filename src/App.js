@@ -14,7 +14,6 @@ const App = () => {
   useEffect(() => {
     const responce = async () => {
       const res = await fetchData();
-      console.log(res);
       setData({ ...data, data: res });
     };
     const fetchDailyDataFunction = async () => {
@@ -34,11 +33,11 @@ const App = () => {
   };
   return (
     <div className={styles.container}>
-      <img className={styles.img} alt="COVID-19" src={img} />
-      <Cards data={data} />
-      <CountryPicker countryChange={countryChange} />
-      <Chart data={data} dailyData={dailyData} />
       {!loading ? null : <Spinner />}
+      <img className={styles.img} alt="COVID-19" src={img} />
+      {data && data.data ? <Cards data={data} /> : null}
+      <CountryPicker countryChange={countryChange} />
+      {data ? <Chart data={data} dailyData={dailyData} /> : null}
     </div>
   );
 };
