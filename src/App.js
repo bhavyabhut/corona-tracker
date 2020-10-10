@@ -3,28 +3,42 @@ import Cards from "./Components/Cards/Cards.js";
 import Chart from "./Components/Chart/Chart.js";
 import CountryPicker from "./Components/CountryPicker/CountryPicker.js";
 import styles from "./App.module.css";
-import fetchdata from "./Api/index.js";
+import fetchData, { fetchDailyData } from "./Api/index.js";
 import img from "./img/image.png";
+import Spinner from "./Components/Loading/Loading";
 
 const App = () => {
   const [data, setData] = useState({ data: "", country: "" });
+  const [dailyData, setDailyData] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    const Responce = async () => {
-      const res = await fetchdata();
+    const responce = async () => {
+      const res = await fetchData();
+      console.log(res);
       setData({ ...data, data: res });
     };
-    Responce();
+    const fetchDailyDataFunction = async () => {
+      const data = await fetchDailyData();
+      setDailyData(data);
+    };
+    fetchDailyDataFunction();
+    responce();
   }, []);
-  const countryChange = async (country) => {
-    const data = await fetchdata(country);
+  const countryChange = async ([country, code]) => {
+    setLoading(true);
+    const data = await fetchData(country);
+    const dailyData = await fetchDailyData(code);
+    setDailyData(dailyData);
     setData({ data, country });
+    setLoading(false);
   };
   return (
     <div className={styles.container}>
       <img className={styles.img} alt="COVID-19" src={img} />
       <Cards data={data} />
       <CountryPicker countryChange={countryChange} />
-      <Chart data={data} />
+      <Chart data={data} dailyData={dailyData} />
+      {!loading ? null : <Spinner />}
     </div>
   );
 };
